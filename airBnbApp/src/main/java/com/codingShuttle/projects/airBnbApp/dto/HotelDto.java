@@ -1,13 +1,16 @@
 package com.codingShuttle.projects.airBnbApp.dto;
 
-import com.codingShuttle.projects.airBnbApp.entity.HotelContactInfo;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+import com.codingShuttle.projects.airBnbApp.entity.HotelContactInfo;
 
-import java.time.LocalDateTime;
 
 @Data
+@Getter
+@Setter
 public class HotelDto {
 
     private Long id;

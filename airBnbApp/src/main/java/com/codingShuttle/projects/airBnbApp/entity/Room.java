@@ -1,17 +1,20 @@
 package com.codingShuttle.projects.airBnbApp.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Room {
 
     @Id
@@ -30,6 +33,9 @@ public class Room {
     @Column(nullable = false)
     private Integer totalCount;
 
+    @Column(nullable=false)
+    private String city;
+
     private Integer capacity;
 
     @Column(columnDefinition = "TEXT[]")
@@ -43,6 +49,10 @@ public class Room {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+
+
+
 
 
 

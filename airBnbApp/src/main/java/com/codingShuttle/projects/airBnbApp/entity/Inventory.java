@@ -1,8 +1,7 @@
 package com.codingShuttle.projects.airBnbApp.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,9 +15,13 @@ import java.time.LocalDateTime;
 @Table(uniqueConstraints = @UniqueConstraint(name="hotel_room_date",
         columnNames ={"hotel_id","room_id","date"}
 ))
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Inventory {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch= FetchType.LAZY)
@@ -37,6 +40,9 @@ public class Inventory {
     // rather it will only see the columnDefention which you have specified
     private Integer bookedCount;
 
+    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
+    private Integer reservedCount;
+
     @Column(nullable = false)
     private Integer totalCount;
 
@@ -46,7 +52,7 @@ public class Inventory {
     @Column(nullable = false, precision=10, scale=2)
     private BigDecimal price; // basePrice* surgeFactor
 
-    @Column(nullable = false)
+    @Column(nullable=false)
     private String city;
 
     @Column
